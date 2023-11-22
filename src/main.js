@@ -1,3 +1,12 @@
+
+// ----------------------------
+// Author: Laura Sofía Leon ALban, Valentina Betancourt, Samuel Robayo
+//  Date of creation: 09/11/23
+//  Last modification 21/11/23
+//  DEVELOPER TIP: Please refresh the main.js along with the webpage in case of missing files/audios
+// ----------------------------
+
+
 // ----------------------------
 // Inicialización de Variables:
 // ----------------------------
@@ -94,6 +103,9 @@ function start() {
   animate();
 }
 
+/*
+Description: is the function responsible for adjusting aspects of the window size.
+*/
 function onWindowResize() {
 
   // Update the aspect ratio of the camera based on the new window dimensions
@@ -106,6 +118,11 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+/*
+Description: is in charge of unifying all the initialization
+functions in one place, facilitating the configuration and maintenance of 
+the project.
+*/
 function initScene() {
 
   initBasicElements(); // Scene, Camera and Render
@@ -115,6 +132,9 @@ function initScene() {
   createPlayerMove();  // Movement of the player
 }
 
+/*
+Description: is in charge of animate and renderer the scene, the 3d sounds and the signs
+*/
 function animate() {
 
   requestAnimationFrame(animate);
@@ -134,6 +154,11 @@ function animate() {
 
 }
 
+/*
+Description: is in charge of configuring the basic elements of a 
+threejs scene, additionally it loads an image for the scene background,
+and an audio.
+*/
 function initBasicElements() {
 
   scene = new THREE.Scene();
@@ -152,6 +177,10 @@ function initBasicElements() {
   playAudio(y);
 }
 
+/*
+Description: is in charge of configuring and 
+reproducing the 3D sounds of the animals within the scene
+*/
 function initSound() {
 
   sound1 = new Sound(["./sounds/lion/rugLion.mp3"], 6, scene, {
@@ -177,6 +206,13 @@ function initSound() {
   sound4.play(); //Grizzly Sound
 }
 
+/*
+Description: is the function in charge 
+of loading a 3d model of type gltf into the scene.
+Arguments: path, position, scale, and rotationY, which represent respectively 
+the path of the model file, its position within the scene, the scale (size) of the
+model, and rotation with respect to the y-axis.
+*/
 function createGLTFLoader(path, position, scale, rotationY) {
 
   const loader = new THREE.GLTFLoader().setPath(path);
@@ -190,6 +226,10 @@ function createGLTFLoader(path, position, scale, rotationY) {
   });
 }
 
+/*
+Description: is in charge of calling createGLTFLoader() 
+with the respective parameters of each animal model.
+*/
 function loadAnimals() {
 
   createGLTFLoader('./modelos/animals/lion/', posLeon, [5, 5, 5], 2.79);
@@ -198,6 +238,11 @@ function loadAnimals() {
   createGLTFLoader('./modelos/animals/oso/', posOso, [1, 1, 1], 3.14);
 }
 
+/*
+Description: This function is in charge of loading the 3D models of the different trees found in the map, through previously established arrays 
+with the different positions for each type of tree. 
+This function reuses "createGLTFLoader()"
+*/
 function loadTrees() {
 
   //Normal tree
@@ -222,6 +267,11 @@ function loadTrees() {
   }
 }
 
+/*
+Description: is the function in charge of loading a 3d model of type obj into the scene.
+Arguments: generalPath, pathMtl and pathObj, which represent respectively the general file path,
+the MTL file path and the OBJ file path.
+*/
 function createFistModel(generalPath, pathMtl, pathObj) {
 
   var mtlLoader = new THREE.MTLLoader();
@@ -264,6 +314,10 @@ function addVideos() {
   scene.add(plano);
 }
 
+/*
+Description: creates a 3D plane geometry.
+Arguments: the path of the texture image, the position and the rotation of the plane.
+*/
 function createPlaneGeometry(path, position, rotation = 0) {
 
   const texture = new THREE.TextureLoader().load(path);
@@ -277,6 +331,10 @@ function createPlaneGeometry(path, position, rotation = 0) {
   group.add(plane);
 }
 
+/*
+Description: is in charge of adding the informative signs around the map, 
+for this purpose it reuses the function "createPlaneGeometry".
+*/
 function addInfo() {
 
   createPlaneGeometry('./img/info/lion.png', [-16, 1], 1.57); //x & z positions of the plane
@@ -290,6 +348,9 @@ function addInfo() {
   scene.add(group);
 }
 
+/*
+Description: is in charge of adding lights to the scene.
+*/
 function createLight() {
 
   light = new THREE.AmbientLight(0xffffff, 0.9);
@@ -302,6 +363,10 @@ function createLight() {
   light2.castShadow = true;
 }
 
+/*
+Description: is in charge of unifying the corresponding functions to load the necessary 
+elements of the zoo itself, such as the map, its animals and its information.
+*/
 function initWorld() {
 
   createFistModel("./modelos/Base/", "base 1.mtl", "base 1.obj");
@@ -380,7 +445,10 @@ window.addEventListener('keyup', function (e) {
   }
 });
 
-
+/*
+Description: function, which is responsible for loading and applying the scene background.
+Arguments:  path, which represents the path of the image file to be used as background.
+*/
 function loadBackground(path) {
   const loader = new THREE.TextureLoader();
   loader.load(path, function (texture) {
@@ -388,6 +456,15 @@ function loadBackground(path) {
   });
 }
 
+// ----------------------------------
+// Functions that are called from index
+// ----------------------------------
+
+/*
+Description: is the function in charge of changing the zoo time (night and day).
+It uses a switch that validates the current state and applies the 
+respective changes in the background and the ambience sound.
+*/
 function changeTime() {
   switch (estadoDia) {
     case "dia":
@@ -417,9 +494,6 @@ function changeTime() {
   }
 }
 
-// ----------------------------------
-// Funciones llamadas desde el index:
-// ----------------------------------
 
 function go2Play() {
   pauseAudio(y);
