@@ -1,0 +1,11 @@
+Model Information:
+* title:	AS08 Ficus Elastica (Rubber Fig)
+* source:	https://sketchfab.com/3d-models/as08-ficus-elastica-rubber-fig-836da8349e3b451e996567df8a90fae1
+* author:	xfrog (https://sketchfab.com/xfrog)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "AS08 Ficus Elastica (Rubber Fig)" (https://sketchfab.com/3d-models/as08-ficus-elastica-rubber-fig-836da8349e3b451e996567df8a90fae1) by xfrog (https://sketchfab.com/xfrog) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)

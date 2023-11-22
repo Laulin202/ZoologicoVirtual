@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computer Graphics - Parcial 3</title>
+    <link rel="icon" href="./img/usb.jpg">
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- Add all for GUI -->
+    <script src="./src/libs/jquery-1.11.1.js"></script>
+    <script src="./src/libs/three.js"></script>
+    <script src="./src/libs/DAT.GUI.min.js"></script>
+    <script src="./src/libs/Stats.js"></script>
+    
+    <!-- ////////////////-->
+    <script src="./vendors/three.js-master/build/three.min.js"></script>
+    <script src="./vendors/controls/OrbitControls.js"></script>
+    <script src="./vendors/load/DRACOLoader.js"></script>
+    <script src="./vendors/load/GLTFLoader.js"></script>
+    <script src="./vendors/load/OBJLoader.js"></script>
+    <script src="./vendors/load/MTLLoader.js"></script>
+    <script src="./vendors/controls/FirstPersonControls.js"></script>
+    <script src="./vendors/controls/PointerLockControls.js"></script>
+
+    <script src="./src/mov/FPSControls.js"></script>
+    <script src="./src/mov/pointerlock.js"></script>
+    <script src="./src/Sound.js"></script>
+    
+    <script src="./src/main.js"></script>
+</head>
+<body onload="start()">
+    <canvas id="app"></canvas>
+    <div id="blocker">
+        <div class="container">
+            <button onclick="goToInstructions()" style="font-size:36px"><span>Go to play</span></button>
+        </div>     
+    </div>
+
+    <div id="instrucciones" style="display: none;">  <!--Como es la segunda pantalla, tengo que crearla ya con el display en none-->
+        <div id="instructions2">
+            <div class="container2">
+                <button onclick="go2Play()" style="font-size:20px" class="bottom"><span>¡Ok!</span></button>
+            </div> 
+        </div>
+    </div>
+
+    <div>
+        <div id="buttonShow" style="display: none;" >
+            <button onclick="changeTime()" class="btn-1" id="buttonTime">Switch Time</button>
+        </div>
+    </div>
+    
+
+    <video src="./videos/zoo.mp4"
+        id="video"
+        muted
+        loop
+        style ="display: none"
+    ></video>
+
+    
+	<audio id="background">
+		<source src="./songs/birdBackground.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="intro">
+		<source src="./songs/hakunaMatata.mp3" type="audio/mpeg">
+	</audio>
+
+    <audio id="bkNight">
+        <source src="./songs/bkNight.mp3" type="audio/mpeg">
+    </audio>
+    
+	<script>
+		var x = document.getElementById("background"); // Daylight's ambience sound
+        var y = document.getElementById("intro");   // Main's screen theme song
+        var z = document.getElementById("bkNight"); // Night ambience sound
+		function playAudio(k) { 
+            k.volume = 0.5;
+            k.loop = true;
+			k.play(); 
+            
+        } 
+        function pauseAudio(k) { 
+			k.pause(); 
+		} 
+
+    </script>
+</body>
+</html>
